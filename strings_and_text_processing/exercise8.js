@@ -29,7 +29,8 @@ let longText = 'Four score and seven years ago our fathers brought forth' +
   ' earth.';
 
 function longestSentence(text) {
-  let sentences = text.match(/\w[^.!?]*?[.!?]/g);
+  let sentences = text.match(/[^.!?]*?[.!?]/g);
+  sentences = sentences.map(sentence => sentence.trim());
   let longest = sentences.sort((a, b) => b.length - a.length)[0];
 
   console.log(longest)
