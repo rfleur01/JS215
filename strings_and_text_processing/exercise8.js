@@ -29,12 +29,14 @@ let longText = 'Four score and seven years ago our fathers brought forth' +
   ' earth.';
 
 function longestSentence(text) {
-  let sentences = text.replace(/['[^!?]+']/, ".").split(". ");
-  let lengths = sentences.map(sentence => sentence.split(' ').length);
-  return Math.max(...lengths);
+  let sentences = text.match(/\w[^.!?]*?[.!?]/g);
+  let longest = sentences.sort((a, b) => b.length - a.length)[0];
+
+  console.log(longest)
+  console.log('The longest sentence has ' + longest.split(" ").length + ' words.');
 }
 
-console.log(longestSentence(longText));
+longestSentence(longText);
 
 // console output
 // It is rather for us to be here dedicated to the great task remaining before us -- that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion -- that we here highly resolve that these dead shall not have died in vain -- that this nation, under God, shall have a new birth of freedom -- and that government of the people, by the people, for the people, shall not perish from the earth.
@@ -44,7 +46,7 @@ console.log(longestSentence(longText));
 
 // Assuming the last sentence is removed:
 
-longestSentence(longText);
+// longestSentence(longText);
 
 // console output
 // Four score and seven years ago our fathers brought forth on this continent a new nation, conceived in liberty, and dedicated to the proposition that all men are created equal.
