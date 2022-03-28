@@ -31,13 +31,17 @@ let longText = 'Four score and seven years ago our fathers brought forth' +
 function longestSentence(text) {
   let sentences = text.match(/[^.!?]*?[.!?]/g);
   sentences = sentences.map(sentence => sentence.trim());
-  let longest = sentences.sort((a, b) => b.length - a.length)[0];
+  let longest = sentences.sort((a, b) => b.split(' ').length - a.split(' ').length)[0];
 
   console.log(longest)
   console.log('The longest sentence has ' + longest.split(" ").length + ' words.');
 }
 
 longestSentence(longText);
+
+let text = "To be or not to be? The brown fox is superlative!";
+longestSentence(text);
+
 
 // console output
 // It is rather for us to be here dedicated to the great task remaining before us -- that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion -- that we here highly resolve that these dead shall not have died in vain -- that this nation, under God, shall have a new birth of freedom -- and that government of the people, by the people, for the people, shall not perish from the earth.
